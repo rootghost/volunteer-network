@@ -1,0 +1,28 @@
+.logo{
+    position: absolute;
+    width: 202.81px;
+    height: 60px;
+    left: 575px;
+    top: 44px;
+}
+.register-box{
+    position: absolute;
+    width: 570px;
+    height: 457px;
+    left: 435px;
+    top: 171px;
+    font-weight: bold;
+    background: #FFFFFF;
+    border: 1px solid #ABABAB;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 30px;
+}
+.register-btn{
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 10px;
+    color: white;
+    background-color: #3F90FC;
+}

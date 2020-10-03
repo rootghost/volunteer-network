@@ -1,25 +1,49 @@
-import React from 'react';
+import React, { createContext, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Home from './components/Home/Home';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Login from './components/Login/Login';
+import Volunteer from './components/Volunteer/Volunteer';
+import Events from './components/events/Events';
+
+export const userContex = createContext();
 
 function App() {
+
+  const [logedInUser,setLogedInUser] = useState({hello : 'hello'});
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <userContex.Provider value={[logedInUser,setLogedInUser]}>
+
+        <div className="container">
+          <Router>
+              <Switch>
+                  <Route exact path="/">
+                    <Home></Home>
+                  </Route>
+                  <Route path="/home">
+                    <Home></Home>
+                  </Route>
+                  <Route path="/login">
+                    <Login></Login>
+                  </Route>
+                  <Route path="/volunteer/:event">
+                    <Volunteer></Volunteer>
+                  </Route>
+                  <Route path="/events">
+                      <Events></Events>
+                  </Route>
+              </Switch>
+          </Router>
+        </div>
+  
+    </userContex.Provider>
   );
 }
 
