@@ -11,6 +11,8 @@ import {
 import Login from './components/Login/Login';
 import Volunteer from './components/Volunteer/Volunteer';
 import Events from './components/events/Events';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import EventCard from './components/events/EventCard';
 
 export const userContex = createContext();
 
@@ -33,12 +35,12 @@ function App() {
                   <Route path="/login">
                     <Login></Login>
                   </Route>
-                  <Route path="/volunteer/:event">
+                  <PrivateRoute path="/volunteer/:event">
                     <Volunteer></Volunteer>
-                  </Route>
-                  <Route path="/events">
+                  </PrivateRoute>
+                  <PrivateRoute path="/events">
                       <Events></Events>
-                  </Route>
+                  </PrivateRoute>
               </Switch>
           </Router>
         </div>

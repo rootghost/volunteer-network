@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
 import logo from '../../logos/Group 1329.png'
 import './volunteer.css'
@@ -6,15 +7,23 @@ import './volunteer.css'
 const Volunteer = () => {
 
     const {event} = useParams()
-
-    const [formdata,setFormData] = useState({});
     const history = useHistory()
 
-    const handleSubmit = (e) =>{
-        // history.push("/events")
-        e.preventDefault();
-        
-    }
+    const { register, handleSubmit, watch, errors } = useForm();
+
+    const onSubmit = data => {
+        fetch("http://localhost:5000/eventRegistration",{
+            method : "POST",
+            headers:{'Content-type': 'application/json'},
+            body : JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(data =>{
+            if(data){
+                history.replace("/events")
+            }
+        })
+    };
 
     return (
         <div>
@@ -22,21 +31,26 @@ const Volunteer = () => {
             <div className="register-box">
                 <div>
                     <h5>Register a volunteer </h5>
-                    <form action="http://localhost:5000/eventRegistration" method="POST">
+                    <form onSubmit={handleSubmit(onSubmit)}>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="exampleInputEmail1" required placeholder="Full Name" name="name" ></input>
+                            <input name="name" class="form-control"  ref={register({ required: true })} placeholder="Your Name" />
+                            {errors.name && <span className="error">Name is required</span>}
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control" required id="exampleInputEmail1" placeholder="Email" name="email" ></input>
+                            <input name="email" class="form-control"  ref={register({ required: true })} placeholder="Email" />
+                            {errors.name && <span className="error">Email is required</span>}
                         </div>
                         <div class="form-group">
-                            <input type="Date" class="form-control" required id="exampleInputEmail1" placeholder="Date" name="date" ></input>
+                            <input name="date" type="date" class="form-control"  ref={register({ required: true })} placeholder="Date" />
+                            {errors.name && <span className="error">Date is required</span>}
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" required id="exampleInputEmail1" placeholder="Description" name="description" ></input>
+                            <input name="description" class="form-control"  ref={register({ required: true })} placeholder="Description" />
+                            {errors.name && <span className="error">Description is required</span>}
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" required id="exampleInputEmail1" value={event} placeholder="Full Name" name="event"></input>
+                            <input name="event" class="form-control"  ref={register({ required: true })} defaultValue={event} placeholder="Email" />
+                            {errors.name && <span className="error">Event is required</span>}
                         </div>
                         <input  className="register-btn" type="submit" value="Register"></input>
                     </form>
