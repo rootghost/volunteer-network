@@ -19,7 +19,7 @@ console.log(props)
                 </div>
                 
                 <div style={{alignSelf:"flex-end"}} >
-                    <button onClick={()=>props.handleDelete(_id)} className="btn btn-light">cancel</button>
+                    <button onClick={()=>props.handleDelete(_id)} className="btn btn-danger">cancel</button>
                 </div>
                 
             </div>

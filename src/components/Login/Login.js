@@ -23,7 +23,7 @@ const Login = () => {
     
     useEffect(()=>{
 
-        fetch("http://localhost:5000/getuser")
+        fetch("https://fathomless-ridge-12223.herokuapp.com/getuser")
         .then(res => res.json())
         .then(data => {
             setUser(data)
@@ -48,7 +48,7 @@ const Login = () => {
             else{
 
                 const userInfo = {email:email,name:displayName}
-                fetch('http://localhost:5000/user',{
+                fetch('https://fathomless-ridge-12223.herokuapp.com/user',{
                     method : "POST",
                     headers:{'Content-type' : 'application/json'},
                     body : JSON.stringify(userInfo)

@@ -9,7 +9,7 @@ const Home = () => {
 
     useEffect(()=>{
 
-        fetch("http://localhost:5000/activity")
+        fetch("https://fathomless-ridge-12223.herokuapp.com/activity")
         .then(res => res.json())
         .then(data =>setActivity(data))
 
@@ -22,7 +22,7 @@ const Home = () => {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-                <a className="navbar-brand" href="/home"><img style={{width : "195px",height:"50px"}} alt="" src={logo}></img></a>
+                <Link className="navbar-brand" to="/home"><img style={{width : "195px",height:"50px"}} alt="" src={logo}></img></Link>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>

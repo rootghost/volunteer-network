@@ -14,12 +14,13 @@ import Events from './components/events/Events';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import EventCard from './components/events/EventCard';
 import Admin from './components/Admin/Admin';
+import Nomatch from './components/Nomatch/Nomatch';
 
 export const userContex = createContext();
 
 function App() {
 
-  const [logedInUser,setLogedInUser] = useState({hello : 'hello'});
+  const [logedInUser,setLogedInUser] = useState({});
 
   return (
     <userContex.Provider value={[logedInUser,setLogedInUser]}>
@@ -44,6 +45,9 @@ function App() {
                   </PrivateRoute>
                   <Route path="/admin">
                       <Admin></Admin>
+                  </Route>
+                  <Route path="*">
+                      <Nomatch></Nomatch>
                   </Route>
               </Switch>
           </Router>

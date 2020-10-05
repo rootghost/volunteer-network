@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory, useParams } from 'react-router-dom';
+import { userContex } from '../../App';
 import logo from '../../logos/Group 1329.png'
 import './volunteer.css'
 
@@ -8,6 +9,7 @@ const Volunteer = () => {
 
     const {event} = useParams()
     const history = useHistory()
+    const [logedInUser,setLogedInUser] = useContext(userContex)
 
     const { register, handleSubmit, watch, errors } = useForm();
 
@@ -33,11 +35,11 @@ const Volunteer = () => {
                     <h5>Register a volunteer </h5>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div class="form-group">
-                            <input name="name" class="form-control"  ref={register({ required: true })} placeholder="Your Name" />
+                            <input name="name" class="form-control" defaultValue={logedInUser.name}  ref={register({ required: true })} placeholder="Your Name" />
                             {errors.name && <span className="error">Name is required</span>}
                         </div>
                         <div class="form-group">
-                            <input name="email" class="form-control"  ref={register({ required: true })} placeholder="Email" />
+                            <input name="email" class="form-control" defaultValue={logedInUser.email}  ref={register({ required: true })} placeholder="Email" />
                             {errors.name && <span className="error">Email is required</span>}
                         </div>
                         <div class="form-group">

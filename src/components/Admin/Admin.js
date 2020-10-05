@@ -20,7 +20,7 @@ const Admin = () => {
     }
 
     const  handleDelete = (id) =>{
-        fetch(`http://localhost:5000/delete/${id}`,{
+        fetch(`https://fathomless-ridge-12223.herokuapp.com/delete/${id}`,{
             method : "DELETE"
         })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const Admin = () => {
 
     const onSubmit = data => {
         const eventInfo = {event: data.event,picture:"clothSwap.png"}
-        fetch("http://localhost:5000/AddActivity",{
+        fetch("https://fathomless-ridge-12223.herokuapp.com/AddActivity",{
             method:"POST",
             headers:{'Content-type': 'application/json'},
             body: JSON.stringify(eventInfo)
@@ -48,7 +48,7 @@ const Admin = () => {
 
 
     useEffect(()=>{
-        fetch("http://localhost:5000/allevent")
+        fetch("https://fathomless-ridge-12223.herokuapp.com/allevent")
         .then(res => res.json())
         .then(data =>setEvent(data))
     },[count])

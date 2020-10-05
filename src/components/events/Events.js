@@ -10,7 +10,7 @@ const Events = () => {
     const [event,setEvent] = useState([])
     const [count,setCount] = useState(0)
     useEffect(()=>{
-        fetch(`http://localhost:5000/event?email=${logedInUser.email}`)
+        fetch(`https://fathomless-ridge-12223.herokuapp.com/event?email=${logedInUser.email}`)
         .then(res =>  res.json())
         .then(data =>{
             setEvent(data)
@@ -18,7 +18,7 @@ const Events = () => {
     },[count])
 
     const  handleDelete = (id) =>{
-        fetch(`http://localhost:5000/delete/${id}`,{
+        fetch(`https://fathomless-ridge-12223.herokuapp.com/delete/${id}`,{
             method : "DELETE"
         })
         .then(res => res.json())
@@ -44,9 +44,9 @@ const Events = () => {
                     <div className="navbar-nav ml-auto">
 
                         <Link className="nav-link active" to="/home">Home <span class="sr-only">(current)</span></Link>
-                        <Link className="nav-link" to="/features">Donation</Link>
+                        <Link className="nav-link" to="/donation">Donation</Link>
                         <Link className="nav-link" to="/events">Events</Link>
-                        <Link className="nav-link" to="/pricing">Blog</Link>
+                        <Link className="nav-link" to="/blog">Blog</Link>
                         <span style={{fontWeight:"bold", marginTop:"7px"}}>{logedInUser.name}</span>
                 
                     </div>
