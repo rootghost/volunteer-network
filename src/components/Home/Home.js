@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import logo from '../../logos/Group 1329.png'
 import Card from './Card';
 
@@ -21,7 +22,7 @@ const Home = () => {
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-                <a className="navbar-brand" href="/home"><img style={{width : "195px",height:"50px"}} src={logo}></img></a>
+                <a className="navbar-brand" href="/home"><img style={{width : "195px",height:"50px"}} alt="" src={logo}></img></a>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -31,12 +32,12 @@ const Home = () => {
 
                     <div className="navbar-nav ml-auto">
 
-                        <a className="nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
-                        <a className="nav-link" href="/features">Donation</a>
-                        <a className="nav-link" href="/pricing">Events</a>
-                        <a className="nav-link" href="/pricing">Blog</a>
+                        <Link className="nav-link active" to="/home">Home <span className="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/features">Donation</Link>
+                        <Link className="nav-link" to="/events">Events</Link>
+                        <Link className="nav-link" to="/pricing">Blog</Link>
                         <button className="btn btn-primary ml-2">Register</button>
-                        <button className="btn btn-dark ml-2">Admin</button>
+                        <button className="btn btn-dark ml-2"><Link style={{textDecoration:"none"}} to="/admin">Admin</Link></button>
                    
                     </div>
                 </div>
@@ -58,7 +59,7 @@ const Home = () => {
             {/* volunteering activity content */}
             <div className="mt-3 row">
                 {
-                    activity.map( activity => <Card activity={activity}></Card>)
+                    activity.map( activity => <Card key={activity._id} activity={activity}></Card>)
                 }
             </div>
 

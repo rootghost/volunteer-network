@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { userContex } from '../../App';
 import logo from '../../logos/Group 1329.png'
 import EventCard from './EventCard';
@@ -32,7 +33,7 @@ const Events = () => {
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-                <a className="navbar-brand" href="/home"><img style={{width : "195px",height:"50px"}} src={logo}></img></a>
+                <Link className="navbar-brand" to="/home"><img style={{width : "195px",height:"50px"}}alt="" src={logo}></img></Link>
 
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"           aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
@@ -42,10 +43,10 @@ const Events = () => {
 
                     <div className="navbar-nav ml-auto">
 
-                        <a className="nav-link active" href="/home">Home <span class="sr-only">(current)</span></a>
-                        <a className="nav-link" href="/features">Donation</a>
-                        <a className="nav-link" href="/pricing">Events</a>
-                        <a className="nav-link" href="/pricing">Blog</a>
+                        <Link className="nav-link active" to="/home">Home <span class="sr-only">(current)</span></Link>
+                        <Link className="nav-link" to="/features">Donation</Link>
+                        <Link className="nav-link" to="/events">Events</Link>
+                        <Link className="nav-link" to="/pricing">Blog</Link>
                         <span style={{fontWeight:"bold", marginTop:"7px"}}>{logedInUser.name}</span>
                 
                     </div>
@@ -54,7 +55,7 @@ const Events = () => {
 
             <div style={{backgroundColor:"#F8F9FA"}} className="row">
                 {
-                    event.map(event =><EventCard handleDelete={handleDelete} event={event}></EventCard>)
+                    event.map(event =><EventCard key={event._id} handleDelete={handleDelete} event={event}></EventCard>)
                 }
             </div>     
         </div>

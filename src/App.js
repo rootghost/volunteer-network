@@ -13,6 +13,7 @@ import Volunteer from './components/Volunteer/Volunteer';
 import Events from './components/events/Events';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import EventCard from './components/events/EventCard';
+import Admin from './components/Admin/Admin';
 
 export const userContex = createContext();
 
@@ -41,6 +42,9 @@ function App() {
                   <PrivateRoute path="/events">
                       <Events></Events>
                   </PrivateRoute>
+                  <Route path="/admin">
+                      <Admin></Admin>
+                  </Route>
               </Switch>
           </Router>
         </div>
