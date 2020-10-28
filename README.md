@@ -1,5 +1,5 @@
 # Volunteer Network
-[Web site] (https://volunteer-network-a4061.web.app/)
+[Web site](https://volunteer-network-a4061.web.app/)
 
 ## Key Features:
 - User can register any event as a volunteering activity and they can also cancel their
